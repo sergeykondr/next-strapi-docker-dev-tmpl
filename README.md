@@ -15,7 +15,7 @@ This project contains a Strapi and Next.js application using Docker. This guide 
 1. Clone the Repository
 
     ```sh
-    git clone https://github.com/your-repo/next-strapi-docker.git
+    git clone [https://github.com/your-repo/next-strapi-docker.git](https://github.com/sergeykondr/next-strapi-docker-dev-tmpl.git)
     cd next-strapi-docker
     ```
 
