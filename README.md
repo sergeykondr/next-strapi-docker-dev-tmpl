@@ -71,7 +71,7 @@ This project contains a Strapi and Next.js application using Docker. This guide 
     docker-compose up --build
     ```
 
-3. For subsequent starts
+3. For subsequent starts:
    ```sh
     docker-compose up -d
     ```
