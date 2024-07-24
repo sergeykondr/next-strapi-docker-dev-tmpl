@@ -35,10 +35,10 @@ This project contains a Strapi and Next.js application using Docker. This guide 
     openssl rand -base64 32 # Run this command for each key
     ```
 
-    option B. Generate unique keys and fill the `.env` file (for Windows powershell):
+    option B. Generate unique keys and fill the `.env` file (for Windows PowerShell). Run this command for each key:
 
     ```sh
-      [Convert]::ToBase64String((1..32 | ForEach-Object { Get-Random -Minimum 0 -Maximum 256 })) # Run this command for each key
+      [Convert]::ToBase64String((1..32 | ForEach-Object { Get-Random -Minimum 0 -Maximum 256 }))
     ```
 
     Example `.env` file:
