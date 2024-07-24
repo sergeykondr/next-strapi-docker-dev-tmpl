@@ -16,7 +16,7 @@ This project contains a Strapi and Next.js application using Docker. This guide 
 
     ```sh
     git clone https://github.com/sergeykondr/next-strapi-docker-dev-tmpl.git
-    cd next-strapi-docker
+    cd next-strapi-docker-dev-tmpl
     ```
 
 2. Create Environment File
