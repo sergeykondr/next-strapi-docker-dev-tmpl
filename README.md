@@ -11,7 +11,7 @@ This project contains a Strapi and Next.js application using Docker. This guide 
 
 ## Project Setup
 
-```
+\```
 1. Clone the Repository
 
     ```sh
