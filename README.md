@@ -73,8 +73,13 @@ This project contains a Strapi and Next.js application using Docker. This guide 
 
 3. For subsequent starts:
    ```sh
+    docker-compose down
+    ```
+    
+   ```sh
     docker-compose up -d
     ```
+    
 
 ### Run Without Docker
 
