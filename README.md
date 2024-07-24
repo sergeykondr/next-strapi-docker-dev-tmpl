@@ -29,10 +29,16 @@ This project contains a Strapi and Next.js application using Docker. This guide 
 
 3. Fill Environment File
 
-    Generate unique keys and fill the `.env` file:
+    option A. Generate unique keys and fill the `.env` file (exclude Windows):
 
     ```sh
     openssl rand -base64 32 # Run this command for each key
+    ```
+
+    option B. Generate unique keys and fill the `.env` file (for Windows powershell):
+
+    ```sh
+      [Convert]::ToBase64String((1..32 | ForEach-Object { Get-Random -Minimum 0 -Maximum 256 })) # Run this command for each key
     ```
 
     Example `.env` file:
