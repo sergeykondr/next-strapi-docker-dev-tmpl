@@ -1,4 +1,4 @@
-# Next-Strapi-Docker using Docker-compose
+# NextJS - Strapi - Postgres using Docker-compose
 
 This project contains a Strapi and Next.js application using Docker. This guide explains how to set up and run the project with Docker and without Docker.
 
