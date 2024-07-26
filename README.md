@@ -1,6 +1,6 @@
-# Next-Strapi-Docker using Docker-compose
+# Next.js - Strapi - Postgres using Docker-compose
 
-This project contains a Strapi and Next.js application using Docker. This guide explains how to set up and run the project with Docker and without Docker.
+This project contains a Strapi, PostgreSQL and Next.js application using Docker. This guide explains how to set up and run the project with Docker and without Docker.
 
 ## Requirements
 
@@ -15,8 +15,8 @@ This project contains a Strapi and Next.js application using Docker. This guide 
 1. Clone the Repository
 
     ```sh
-    git clone https://github.com/your-repo/next-strapi-docker.git
-    cd next-strapi-docker
+    git clone https://github.com/sergeykondr/next-strapi-docker-dev-tmpl.git
+    cd next-strapi-docker-dev-tmpl
     ```
 
 2. Create Environment File
@@ -29,10 +29,16 @@ This project contains a Strapi and Next.js application using Docker. This guide 
 
 3. Fill Environment File
 
-    Generate unique keys and fill the `.env` file:
+    option A. Generate unique keys and fill the `.env` file (exclude Windows):
 
     ```sh
     openssl rand -base64 32 # Run this command for each key
+    ```
+
+    option B. Generate unique keys and fill the `.env` file (for Windows PowerShell). Run this command for each key:
+
+    ```sh
+      [Convert]::ToBase64String((1..32 | ForEach-Object { Get-Random -Minimum 0 -Maximum 256 }))
     ```
 
     Example `.env` file:
@@ -64,6 +70,16 @@ This project contains a Strapi and Next.js application using Docker. This guide 
     ```sh
     docker-compose up --build
     ```
+
+3. For subsequent starts:
+   ```sh
+    docker-compose down
+    ```
+    
+   ```sh
+    docker-compose up -d
+    ```
+    
 
 ### Run Without Docker
 
