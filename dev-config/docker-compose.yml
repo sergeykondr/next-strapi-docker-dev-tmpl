@@ -10,6 +10,11 @@ services:
     volumes:
       - ../frontend:/usr/app
       - /usr/app/node_modules
+    environment:
+      API_TOKEN: ${API_TOKEN}
+      API_URL: ${API_URL}
+    networks:
+    - strapi
   cms:
     build:
       context: ../cms
