@@ -89,11 +89,14 @@ This project contains a Strapi, PostgreSQL and Next.js application using Docker.
    ```
 
 ### Manual Import Postgres dump to db
+#### Go to db container and using psql
    ```sh
    docker ps
    docker exec -it <db_container_name> bash
    psql -U admin -d cms
-      ```sh
+   ```
+#### Drop tables
+   ```sh
             DO $$ DECLARE
            r RECORD;
          BEGIN
@@ -102,17 +105,17 @@ This project contains a Strapi, PostgreSQL and Next.js application using Docker.
            END LOOP;
          END $$;
          \q
-      ```
-   #exit from psql
-   pg_restore -U admin -d cms /dump_importing/postgres.dump
-   
-    
-    docker exec -t <your_db_container_id> pg_dump -U admin -d cms -F c -b -v -f /var/lib/postgresql/data/postgres.dump
    ```
+#### After exiting from psql
+```sh
+pg_restore -U admin -d cms /dump_importing/postgres.dump
+docker exec -t <your_db_container_id> pg_dump -U admin -d cms -F c -b -v -f /var/lib/postgresql/data/postgres.dump
+```
 
 ### Manual copy /uploads (images) to strapi cms
    copy images from your colleague to /next-strapi-docker/cms/public/uploads
 
+____
 
 ### DON'T WORK (Automate DB import via db/init_db.sh) 
 1. Place your database dump file in the `db/dump_importing` directory.
