@@ -89,13 +89,14 @@ This project contains a Strapi, PostgreSQL and Next.js application using Docker.
    ```
 
 ### Manual Import Postgres dump to db
+#### Copy your dump to /db/dump-importing
 #### Go to db container and using psql
    ```sh
    docker ps
    docker exec -it <db_container_name> bash
    psql -U admin -d cms
    ```
-#### Drop tables
+#### Drop all tables
    ```sh
             DO $$ DECLARE
            r RECORD;
@@ -106,7 +107,7 @@ This project contains a Strapi, PostgreSQL and Next.js application using Docker.
          END $$;
          \q
    ```
-#### After exiting from psql
+#### After exiting from psql upload dump from /dump_importing/ 
 ```sh
 pg_restore -U admin -d cms /dump_importing/postgres.dump
 docker exec -t <your_db_container_id> pg_dump -U admin -d cms -F c -b -v -f /var/lib/postgresql/data/postgres.dump
