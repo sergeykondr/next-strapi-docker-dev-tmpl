@@ -1,7 +1,7 @@
 FROM postgres:14.12-alpine3.20
 
 # copy script to container
-COPY ../db/init_db.sh /docker-entrypoint-initdb.d/init_db.sh
+COPY init_db.sh /docker-entrypoint-initdb.d/init_db.sh
 
 #  set chmod
 RUN chmod +x /docker-entrypoint-initdb.d/init_db.sh
