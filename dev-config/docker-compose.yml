@@ -40,7 +40,9 @@ services:
     networks:
       - strapi
   db:
-    image: postgres:14.12-alpine3.20
+    build:
+      context: ../db
+      dockerfile: ../dev-config/Dockerfile.db
     restart: always
     ports:
       - "5432:5432"
@@ -50,6 +52,7 @@ services:
       POSTGRES_DB: ${DATABASE_NAME}
     volumes:
       - db:/var/lib/postgresql/data
+      - ../db/dump_importing:/dump_importing
     networks:
       - strapi
 networks:
