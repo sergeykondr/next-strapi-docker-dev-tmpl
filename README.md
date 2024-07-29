@@ -81,10 +81,10 @@ This project contains a Strapi, PostgreSQL and Next.js application using Docker.
     ```
 
 ### Automate DB import via db/init_db.sh
-1. Place your database dump file in the db/dump_importing directory.
-2. On container startup, db/init_db.sh will automatically import the first file found.
+1. Place your database dump file in the `db/dump_importing` directory.
+2. On container startup, `db/init_db.sh` will automatically import the first file found.
 3. The existing database will be fully overwritten.
-4. After import, the file will be moved to db/dump_importing/imported to prevent re-importing.
+4. After import, the file will be moved to `db/dump_importing/imported` to prevent re-importing.
 
 
 ### Manual Export Postgres dump
