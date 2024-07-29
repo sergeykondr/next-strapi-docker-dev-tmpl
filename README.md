@@ -80,23 +80,48 @@ This project contains a Strapi, PostgreSQL and Next.js application using Docker.
     docker-compose up -d
     ```
 
-### Automate DB import via db/init_db.sh
+### Manual Export Postgres dump
+1.
+   ```sh
+   docker ps
+   docker exec -t <your_db_container_id> pg_dump -U admin -d cms -F c -b -v -f /var/lib/postgresql/data/postgres.dump
+   docker cp <your_db_container_id>:/var/lib/postgresql/data/postgres.dump /Users/<YOUR_USER>/documents/postgres.dump
+   ```
+
+### Manual Import Postgres dump to db
+   ```sh
+   docker ps
+   docker exec -it <db_container_name> bash
+   psql -U admin -d cms
+      ```sh
+            DO $$ DECLARE
+           r RECORD;
+         BEGIN
+           FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = current_schema()) LOOP
+             EXECUTE 'DROP TABLE IF EXISTS ' || quote_ident(r.tablename) || ' CASCADE';
+           END LOOP;
+         END $$;
+         \q
+      ```
+   #exit from psql
+   pg_restore -U admin -d cms /dump_importing/postgres.dump
+   
+    
+    docker exec -t <your_db_container_id> pg_dump -U admin -d cms -F c -b -v -f /var/lib/postgresql/data/postgres.dump
+   ```
+
+### Manual copy /uploads (images) to strapi cms
+   copy images from your colleague to /next-strapi-docker/cms/public/uploads
+
+
+### DON'T WORK (Automate DB import via db/init_db.sh) 
 1. Place your database dump file in the `db/dump_importing` directory.
 2. On container startup, `db/init_db.sh` will automatically import the first file found.
 3. The existing database will be fully overwritten.
 4. After import, the file will be moved to `db/dump_importing/imported` to prevent re-importing.
 
 
-### Manual Export Postgres dump
-   ```sh
-    docker exec -t <your_db_container_id> pg_dump -U admin -d cms -F c -b -v -f /var/lib/postgresql/data/postgres.dump
-    docker cp <your_db_container_id>:/var/lib/postgresql/data/postgres.dump /Users/<YOUR_USER>/documents/postgres.dump
-   ```
 
-### Manual Import Postgres dump
-   ```sh
-    docker exec -t <your_db_container_id> pg_dump -U admin -d cms -F c -b -v -f /var/lib/postgresql/data/postgres.dump
-   ```
 ===========================
 ### Run Without Docker
 
